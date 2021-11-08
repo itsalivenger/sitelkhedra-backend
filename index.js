@@ -41,16 +41,16 @@ app.use(bodyParser.json());
 
                  ///////////////////////////////    4-Routes and Requests    /////////////////////////////////////////
 
-app.use('/auth', authRoute);
+app.use('/api/auth', authRoute);
 // cartel //
-app.use('/cartel', cartel);
+app.use('/api/cartel', cartel);
 // profile //
-app.use('/profile', profile);
+app.use('/api/profile', profile);
 // login ///
-app.use('/login', login);
+app.use('/api/login', login);
 // logout //
-app.use('/logout', logout);
+app.use('/api/logout', logout);
 //sign up//
-app.use('/signup', signup);
+app.use('/api/signup', signup);
 // products //
-app.use('/Products', products);
+app.use('/api/Products', products);
