@@ -16,7 +16,7 @@ let middleware = (req, res, next)=> {
             }
         })
     }else{
-        res.send({approved: false, err: 'token was not found'});
+        res.send({approved: false, err: `token was not found ${token}`});
     }
 }
 module.exports = middleware;
