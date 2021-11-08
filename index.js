@@ -28,7 +28,7 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 const corsOptions ={
     Headers: { "Access-Control-Allow-Origin": "http://localhost:3000"},
-   origin:'http://localhost:3000', 
+   origin:'http://localhost:3000',
    credentials:true,
    optionSuccessStatus:200,
 }

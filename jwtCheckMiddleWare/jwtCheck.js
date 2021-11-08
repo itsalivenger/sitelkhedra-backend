@@ -16,7 +16,7 @@ let middleware = (req, res, next)=> {
             }
         })
     }else{
-        res.send({approved: false, err: `token was not found ${token}`});
+        res.send({approved: false, err: `token was not found ${req.cookies}`});
     }
 }
 module.exports = middleware;
