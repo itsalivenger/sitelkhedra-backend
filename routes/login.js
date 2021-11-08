@@ -11,6 +11,7 @@ router.post('/', (req, res)=>{
             bcrypt.compare(password, found.password).then((matches)=>{
                 if(matches){
                     res.cookie('jwt', createToken(found._id), {secure: true});
+                    console.log('user found')
                     res.status(201).send("Cookie Set");
                 }else{
                     res.status(404).send({errMsg: 'Wrong credentials'});
