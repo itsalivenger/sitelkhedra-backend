@@ -37,7 +37,7 @@ router.post("/", async (req, res)=>{
             .then((result)=> {
                 console.log('account created', result);
                 res.cookie('jwt', createToken(result._id));
-                res.status(201).json("Cookie Set", {redirectUrl: '/'});
+                res.status(201).json("Cookie Set");
             }).catch(err=> console.log(err));
         }
     })

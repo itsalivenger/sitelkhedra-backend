@@ -1,10 +1,12 @@
 let router = require('express').Router();
-
+let {Product} = require('../models/products.js');
 
 
 //   1-Cartel sector   //
 router.get('/', (req, res)=>{
-    // res.send(data);
+    Product.find((products)=>{
+        res.send(products);
+    })
     console.log('donde');
 });
 
