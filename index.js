@@ -5,7 +5,7 @@ const cors = require("cors");
 const bodyParser = require('body-parser');
 const mongoose = require ('mongoose');
 const cookieParser = require('cookie-parser');
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 const signup = require('./routes/signup.js');
 const login = require('./routes/login.js');
 const profile = require('./routes/profile.js');
@@ -27,7 +27,7 @@ mongoose.connect(dbURL,{useNewUrlParser:true})
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 const corsOptions ={
-   origin:'http://localhost:3000', 
+   origin:'https://wail-bazaar.herokuapp.com', 
    credentials:true,
    optionSuccessStatus:200,
 }
