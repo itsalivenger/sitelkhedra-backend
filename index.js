@@ -27,7 +27,7 @@ mongoose.connect(dbURL,{useNewUrlParser:true})
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 const corsOptions ={
-   origin:'*',
+   origin:'http://localhost:3000/',
    credentials:true,
    optionSuccessStatus:200,
 }
