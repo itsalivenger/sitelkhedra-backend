@@ -6,13 +6,13 @@ const bodyParser = require('body-parser');
 const mongoose = require ('mongoose');
 const cookieParser = require('cookie-parser');
 const PORT = process.env.port || 5000;
-const signup = require('./signup.js');
-const login = require('./login.js');
-const profile = require('./profile.js');
-const cartel = require('./cartel.js');
-const products = require('./products.js');
-const logout = require('./logout.js');
-const authRoute = require('./auth.js');
+const signup = require('./routes/signup.js');
+const login = require('./routes/login.js');
+const profile = require('./routes/profile.js');
+const cartel = require('./routes/cartel.js');
+const products = require('./routes/products.js');
+const logout = require('./routes/logout.js');
+const authRoute = require('./routes/auth.js');
 
 ////////////// 2-db connection ///////////////////
 const dbURL="mongodb+srv://user1:1234567890@site-lkhedra-cluster.bzoic.mongodb.net/site-lkhedra-db";

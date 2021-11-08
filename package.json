@@ -13,6 +13,9 @@
     "nodemon": "^2.0.14",
     "validator": "^13.7.0"
   },
+  "engines": {
+    "node": "14.17.5"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
