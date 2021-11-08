@@ -5,7 +5,7 @@ const cors = require("cors");
 const bodyParser = require('body-parser');
 const mongoose = require ('mongoose');
 const cookieParser = require('cookie-parser');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 const signup = require('./routes/signup.js');
 const login = require('./routes/login.js');
 const profile = require('./routes/profile.js');
@@ -27,8 +27,7 @@ mongoose.connect(dbURL,{useNewUrlParser:true})
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 const corsOptions ={
-    Headers: { "Access-Control-Allow-Origin": "http://localhost:3000"},
-   origin:'http://127.0.0.1:5500',
+   origin:'http://localhost:3000',
    credentials:true,
    optionSuccessStatus:200,
 }
