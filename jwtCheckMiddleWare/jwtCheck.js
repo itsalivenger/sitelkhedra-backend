@@ -7,7 +7,7 @@ let middleware = (req, res, next)=> {
         jwt.verify(token, 'spons', async (err, decodedToken)=>{
             if(err){
                 console.log(err);
-                res.send({approved: false});
+                res.send({approved: false, err});
             }else{
                 let currentUser = await User.findById(decodedToken.id);
                 
@@ -16,7 +16,7 @@ let middleware = (req, res, next)=> {
             }
         })
     }else{
-        res.send({approved: false});
+        res.send({approved: false, err: 'token was not found'});
     }
 }
 module.exports = middleware;
