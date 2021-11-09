@@ -27,7 +27,7 @@ mongoose.connect(dbURL,{useNewUrlParser:true})
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 const corsOptions ={
-   origin:'http://localhost:3000',
+   origin:'https://bazaar-wail-front.herokuapp.com/',
    credentials: true,
    optionSuccessStatus:200,
 }
@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Origin', 'https://bazaar-wail-front.herokuapp.com/');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
