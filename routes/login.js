@@ -10,7 +10,7 @@ router.post('/', (req, res)=>{
         if(found){
             bcrypt.compare(password, found.password).then((matches)=>{
                 if(matches){
-                    res.cookie('jwt', createToken(found._id), {secure: true});
+                    res.cookie('jwt', createToken(found._id), {secure: true, sameSite: "none"});
                     console.log('user found')
                     res.status(201).send("Cookie Set");
                 }else{
