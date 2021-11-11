@@ -6,12 +6,10 @@ const createToken = require('../jwt/jwtGen.js');
 router.post('/', (req, res)=>{
     let { email, password} = req.body;
     User.findOne({ email }).then((found)=>{
-        let user = found;
-        if(user){
+        if(found){
             bcrypt.compare(password, found.password).then((matches)=>{
                 if(matches){
                     res.cookie('jwt', createToken(found._id), {secure: true, sameSite: "none"});
-                    res.cookie('user', user, {secure: true, sameSite: "none"});
                     console.log('user found');
                     res.status(201).send("Cookie Set");
                 }else{
