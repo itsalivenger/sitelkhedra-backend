@@ -26,10 +26,11 @@ router.post('/manageItems', (req, res)=>{
             Product.create({type, name, price, quantity, quantityBy})
             .then((createdItem)=>{
                 console.log('item added successfully', createdItem);
+                res.send({msg: 'item added'});
             })
         }else{
             Product.findOneAndReplace({name}, {type, name, price, quantity, quantityBy})
-            .then((updatedItem)=> console.log('item updated', updatedItem))
+            .then((updatedItem)=> res.send({msg: 'item updated'}))
         }
     })
 })
