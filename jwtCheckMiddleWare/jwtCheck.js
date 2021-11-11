@@ -10,7 +10,6 @@ let middleware = (req, res, next)=> {
                 res.send({approved: false, err});
             }else{
                 let currentUser = await User.findById(decodedToken.id);
-                
                 res.send({approved: true, currentUser});
                 next();
             }
