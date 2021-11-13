@@ -13,7 +13,8 @@ const cartel = require('./routes/cartel.js');
 const products = require('./routes/products.js');
 const logout = require('./routes/logout.js');
 const authRoute = require('./routes/auth.js');
-
+//  'https://bazaar-wail-front.herokuapp.com' || 'http://localhost:3000';
+const website = 'http://localhost:3000';
 ////////////// 2-db connection ///////////////////
 const dbURL="mongodb+srv://user1:1234567890@site-lkhedra-cluster.bzoic.mongodb.net/site-lkhedra-db";
 mongoose.connect(dbURL,{useNewUrlParser:true})
@@ -27,7 +28,7 @@ mongoose.connect(dbURL,{useNewUrlParser:true})
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 const corsOptions ={
-   origin:'https://bazaar-wail-front.herokuapp.com',
+   origin: website,
    credentials: true,
    optionSuccessStatus:200,
 }
@@ -37,7 +38,7 @@ app.use(bodyParser.json());
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'https://bazaar-wail-front.herokuapp.com');
+    res.setHeader('Access-Control-Allow-Origin', website);
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

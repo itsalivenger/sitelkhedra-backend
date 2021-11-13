@@ -18,19 +18,21 @@ router.get('/manageItems', authCheck, (req, res)=>{
 })
 
 router.post('/manageItems', (req, res)=>{
-    let { name, price, quantity, type, quantityBy } = req.body;
-
+    let { name, price, quantity, type, quantityBy, qty } = req.body;
+    console.log(req.body)
     Product.findOne({name})
     .then((isFound)=>{
         if(!isFound){
-            Product.create({type, name, price, quantity, quantityBy})
+            Product.create({type, name, price, quantity, quantityBy, qty})
             .then((createdItem)=>{
                 console.log('item added successfully', createdItem);
                 res.send({msg: 'item added'});
             })
+            .catch(err=> console.log('error in creating product item', err));
         }else{
-            Product.findOneAndReplace({name}, {type, name, price, quantity, quantityBy})
+            Product.findOneAndReplace({name}, {type, name, price, quantity, quantityBy, qty})
             .then((updatedItem)=> res.send({msg: 'item updated'}))
+            .catch(err=> console.log('error in updating', err));
         }
     })
 })

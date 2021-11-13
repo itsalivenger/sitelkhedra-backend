@@ -8,7 +8,7 @@ const {User, userSchema} = require("../models/users.js");
 const bcrypt = require('bcrypt');
 
 router.post("/", async (req, res)=>{
-    let {fullname, phoneNumber, email, password, repeatedPass} = req.body;
+    let { fullname, phoneNumber, email, password, repeatedPass } = req.body;
     let emptyCheck = true;
     let errs = [];
     /////// input handling /////////
@@ -33,7 +33,7 @@ router.post("/", async (req, res)=>{
         if(passwordChecker(password, repeatedPass)[0] && phoneChecker(phoneNumber)[0] && isEmail(email) && emptyCheck){
             bcrypt.genSalt()
             .then((salt)=> bcrypt.hash(password, salt))
-            .then((hashedPass)=> User.create({fullname, email, phoneNumber, password: hashedPass}))
+            .then((hashedPass)=> User.create({fullname, email, phoneNumber, password: hashedPass, cartel: {}}))
             .then((result)=> {
                 console.log('account created', result);
                 res.cookie('jwt', createToken(result._id));

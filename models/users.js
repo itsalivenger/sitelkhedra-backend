@@ -22,10 +22,14 @@ let userSchema = new mongoose.Schema({
         type : String,
         required : true,
         minlength : 8
+    },
+    cartel: {
+        type : Array,
+        required : true
     }
 }, {timestamps: true})
 
 
 //khas dir fih nom singulier  tlmodel f lparametre///////
 const User = mongoose.model("user", userSchema);   
-module.exports = {User, userSchema};
+module.exports = { User, userSchema };
