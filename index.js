@@ -14,7 +14,7 @@ const products = require('./routes/products.js');
 const logout = require('./routes/logout.js');
 const authRoute = require('./routes/auth.js');
 //  'https://bazaar-wail-front.herokuapp.com' || 'http://localhost:3000';
-const website = 'http://localhost:3000';
+const website = 'https://bazaar-wail-front.herokuapp.com';
 ////////////// 2-db connection ///////////////////
 const dbURL="mongodb+srv://user1:1234567890@site-lkhedra-cluster.bzoic.mongodb.net/site-lkhedra-db";
 mongoose.connect(dbURL,{useNewUrlParser:true})
