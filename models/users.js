@@ -26,6 +26,10 @@ let userSchema = new mongoose.Schema({
     cartel: {
         type : Array,
         required : true
+    },
+    isAdmin: {
+        type: Boolean,
+        required: false
     }
 }, {timestamps: true})
 

@@ -15,7 +15,6 @@ let middleware = (req, res, next)=> {
             }
         })
     }else{
-        console.log(req.cookies);
         res.send({approved: false, err: `token was not found ${token}`});
     }
 }
