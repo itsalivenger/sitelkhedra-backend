@@ -10,11 +10,10 @@ router.get('/', authCheck, (req, res)=> {
     console.log('requested profile page');
 })
 
-router.post('/profileInfo', (req, res)=> {
+router.post('/profileInfo', async (req, res)=> {
     let { newFullname, newPhoneNumber, currentEmail } = req.body;
-    User.findOneAndUpdate({ email: currentEmail }, {$set: {fullname: newFullname, phoneNumber: newPhoneNumber}})
-    .then(ele=> res.send({msg: ele}))
-    .catch(err=> console.log('this is an error', err));
+    let updatedUser = await User.findOneAndUpdate({ email: currentEmail }, {$set: {fullname: newFullname, phoneNumber: newPhoneNumber}})
+    updatedUser.send({msg: ele})
 })
 
 router.put('/security', async (req, res)=> {
@@ -38,15 +37,20 @@ router.put('/security', async (req, res)=> {
 })
 
 
-router.get('/displayItems', (req, res)=>{
+router.get('/displayItems', async (req, res)=>{
     jwt.verify(req.cookies.jwt, 'spons', async (err, decodedToken)=>{
         if(err){
             res.send(err);
         }else{
-            let currentUser = await User.findById(decodedToken.id);
-            if(currentUser.isAdmin){
-                Product.find()  
-                .then(items=> res.send(items));
+            try{
+                let currentUser = await User.findById(decodedToken.id);
+                if(currentUser.isAdmin){
+                    let items = await Product.find()  
+                    res.send(items);
+                }
+            }
+            catch(err){
+                console.log(err);
             }
         }
     });

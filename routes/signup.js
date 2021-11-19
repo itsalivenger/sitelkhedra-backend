@@ -4,7 +4,8 @@ const {passwordChecker} = require('../inputHandlers/passwordHandler.js');
 const { phoneChecker } = require('../inputHandlers/phoneNumberHandler.js');
 const createToken = require('../jwt/jwtGen.js');
 const { isEmail } = require('validator');
-const {User, userSchema} = require("../models/users.js");
+const { User } = require("../models/users.js");
+const ClientHistory = require("../models/clientHistory.js");
 const bcrypt = require('bcrypt');
 
 router.post("/", async (req, res)=>{
@@ -22,8 +23,7 @@ router.post("/", async (req, res)=>{
         }
     }
 
-    User.findOne({email})
-    .then((user)=>{
+    let user = await User.findOne({email})
         if(user){
             errs.push({errMsg: "User already exists"});
         }
@@ -31,16 +31,14 @@ router.post("/", async (req, res)=>{
             res.status(504).send(errs);
         }
         if(passwordChecker(password, repeatedPass)[0] && phoneChecker(phoneNumber)[0] && isEmail(email) && emptyCheck){
-            bcrypt.genSalt()
-            .then((salt)=> bcrypt.hash(password, salt))
-            .then((hashedPass)=> User.create({fullname, email, phoneNumber, password: hashedPass, cartel: {}}))
-            .then((result)=> {
+            let salt = await bcrypt.genSalt();
+            let hashedPass = await bcrypt.hash(password, salt);
+            let result = await User.create({fullname, email, phoneNumber, password: hashedPass, cartel: {}});
+            let history = await ClientHistory.create({ email, order: []});
                 console.log('account created', result);
                 res.cookie('jwt', createToken(result._id));
                 res.status(201).json("Cookie Set");
-            }).catch(err=> console.log(err));
         }
-    })
         // 
 })
 module.exports = router;

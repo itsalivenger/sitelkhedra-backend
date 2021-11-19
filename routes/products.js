@@ -18,6 +18,8 @@ router.post('/', (req, res)=>{
             console.log('new item', newItem);
             res.send({msg: 'item added'});
         })
+    }else{
+        res.send({msg: 'there was an error'});
     }
 })
 

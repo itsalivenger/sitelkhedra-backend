@@ -13,8 +13,9 @@ const cartel = require('./routes/cartel.js');
 const products = require('./routes/products.js');
 const logout = require('./routes/logout.js');
 const authRoute = require('./routes/auth.js');
+const footer = require('./routes/footer.js');
 //  'https://bazaar-wail-front.herokuapp.com' || 'http://localhost:3000';
-const website = 'https://bazaar-wail-front.herokuapp.com';
+const website = 'http://localhost:3000';
 ////////////// 2-db connection ///////////////////
 const dbURL="mongodb+srv://user1:1234567890@site-lkhedra-cluster.bzoic.mongodb.net/site-lkhedra-db";
 mongoose.connect(dbURL,{useNewUrlParser:true})
@@ -71,3 +72,4 @@ app.use('/api/logout', logout);
 app.use('/api/signup', signup);
 // products //
 app.use('/api/Products', products);
+app.use('/api/footer', footer)
