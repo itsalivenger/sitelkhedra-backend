@@ -1,5 +1,4 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const Subscriber = require('../models/subscription.js');
 
 router.post('/', async (req, res)=> {
@@ -18,3 +17,4 @@ router.post('/', async (req, res)=> {
         res.send(err);
     }
 })
+module.exports = router;
